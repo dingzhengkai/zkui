@@ -118,13 +118,15 @@ This standardization is only needed if you choose to use the rest lookup. You ca
 
 HTTPS
 ====================
-You can enable https if needed. 
+You can enable https if needed.
 keytool -keystore keystore -alias jetty -genkey -keyalg RSA
-
 
 Limitations
 ====================
 1. ACLs are fully supported but at a global level.
+2. cann't set webapp context path, modify context path in source files is my solution.
+
+In detail, change context path and response.sendRedirect path in java files as /xstackzkui/xxx, change context path in all htmls, cp all files in webapp as webapp/xstackzkui.
 
 Screenshots
 ====================

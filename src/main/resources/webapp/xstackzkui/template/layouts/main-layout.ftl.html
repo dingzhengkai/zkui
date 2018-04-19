@@ -15,10 +15,19 @@
 # limitations under the License.
 #
 -->
+<#macro page>
 <html>
     <head>
-        <meta http-equiv="refresh" content="0;url=/xstackzkui/home"/> 
+        <#include "../common/include.ftl.html"/>
     </head>
     <body>
+        <div id="wrap">
+            <#include "../common/menubar.ftl.html"/>
+            <!-- Content starts -->
+            <#nested>
+            <!-- Content ends -->
+        </div>        
     </body>
 </html>
+</#macro>
+
