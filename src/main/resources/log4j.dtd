@@ -38,15 +38,14 @@ element. -->
 <!-- internal log4j logging settings. The "null" value for the threshold -->
 <!-- attribute can be misleading. The threshold field of a repository	 -->
 <!-- cannot be set to null. The "null" value for the threshold attribute -->
-<!-- simply means don't touch the threshold field, the threshold field   --> 
+<!-- simply means don't touch the threshold field, the threshold field   -->
 <!-- keeps its old value.                                                -->
-     
+
 <!ATTLIST log4j:configuration
   xmlns:log4j              CDATA #FIXED "http://jakarta.apache.org/log4j/" 
   threshold                (all|trace|debug|info|warn|error|fatal|off|null) "null"
   debug                    (true|false|null)  "null"
-  reset                    (true|false) "false"
->
+  reset                    (true|false) "false">
 
 <!-- renderer elements allow the user to customize the conversion of  -->
 <!-- message objects to String.                                       -->
@@ -72,8 +71,8 @@ element. -->
       rollingPolicy?, triggeringPolicy?, connectionSource?,
       layout?, filter*, appender-ref*)>
 <!ATTLIST appender
-  name 		CDATA 	#REQUIRED
-  class 	CDATA	#REQUIRED
+  name       CDATA    #REQUIRED
+  class    CDATA	#REQUIRED
 >
 
 <!ELEMENT layout (param*)>
@@ -89,7 +88,7 @@ element. -->
 <!-- ErrorHandlers can be of any class. They can admit any number of -->
 <!-- parameters. -->
 
-<!ELEMENT errorHandler (param*, root-ref?, logger-ref*,  appender-ref?)> 
+<!ELEMENT errorHandler (param*, root-ref?, logger-ref*,  appender-ref?)>
 <!ATTLIST errorHandler
    class        CDATA   #REQUIRED 
 >
@@ -129,8 +128,7 @@ element. -->
 <!ATTLIST category
   class         CDATA   #IMPLIED
   name		CDATA	#REQUIRED
-  additivity	(true|false) "true"  
->
+  additivity	(true|false) "true">
 
 <!-- If no level element is specified, then the configurator MUST not -->
 <!-- touch the level of the named logger. -->
@@ -138,8 +136,7 @@ element. -->
 <!ATTLIST logger
   class         CDATA   #IMPLIED
   name		CDATA	#REQUIRED
-  additivity	(true|false) "true"  
->
+  additivity	(true|false) "true">
 
 
 <!ELEMENT categoryFactory (param*)>
@@ -158,8 +155,8 @@ element. -->
 <!-- plugins must have a name and class and can have optional parameters -->
 <!ELEMENT plugin (param*, connectionSource?)>
 <!ATTLIST plugin
-  name 		CDATA 	   #REQUIRED
-  class 	CDATA  #REQUIRED
+  name       CDATA       #REQUIRED
+  class    CDATA  #REQUIRED
 >
 
 <!ELEMENT connectionSource (dataSource?, param*)>
@@ -174,14 +171,14 @@ element. -->
 
 <!ELEMENT triggeringPolicy ((param|filter)*)>
 <!ATTLIST triggeringPolicy
-  name 		CDATA  #IMPLIED
-  class 	CDATA  #REQUIRED
+  name       CDATA  #IMPLIED
+  class    CDATA  #REQUIRED
 >
 
 <!ELEMENT rollingPolicy (param*)>
 <!ATTLIST rollingPolicy
-  name 		CDATA  #IMPLIED
-  class 	CDATA  #REQUIRED
+  name       CDATA  #IMPLIED
+  class    CDATA  #REQUIRED
 >
 
 
@@ -198,8 +195,7 @@ element. -->
 <!ATTLIST log4j:eventSet
   xmlns:log4j             CDATA #FIXED "http://jakarta.apache.org/log4j/" 
   version                (1.1|1.2) "1.2" 
-  includesLocationInfo   (true|false) "true"
->
+  includesLocationInfo   (true|false) "true">
 
 
 
