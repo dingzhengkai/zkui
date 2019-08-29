@@ -19,20 +19,7 @@ package com.deem.zkui.utils;
 
 import com.deem.zkui.vo.LeafBean;
 import com.deem.zkui.vo.ZKNode;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooDefs;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.ACL;
 import org.apache.zookeeper.data.Id;
 import org.apache.zookeeper.data.Stat;
@@ -41,6 +28,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 public enum ZooKeeperUtil {
 
@@ -54,6 +45,12 @@ public enum ZooKeeperUtil {
     public final static String SOPA_PIPA = "SOPA/PIPA BLACKLISTED VALUE";
 
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(ZooKeeperUtil.class);
+
+    public void addAuthInfo(ZooKeeper zk, String zkUsername, String zkPassword) {
+        if (zkUsername != null && !zkUsername.isEmpty()){
+            zk.addAuthInfo("digest", String.format("%s:%s", zkUsername, zkPassword).getBytes(StandardCharsets.UTF_8));
+        }
+    }
 
     public ZooKeeper createZKConnection(String url, Integer zkSessionTimeout) throws IOException, InterruptedException {
         Integer connectAttempt = 0;
